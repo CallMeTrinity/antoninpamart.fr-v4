@@ -1,0 +1,11 @@
+.grid-container {
+    @apply px-4 xl:px-30 max-w-360 mx-auto;
+}
+
+.grid-row {
+    @apply flex flex-wrap -mx-2 xl:-mx-6;
+}
+
+.grid-col {
+    @apply px-2 xl:px-6;
+}

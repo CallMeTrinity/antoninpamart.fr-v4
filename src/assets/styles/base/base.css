@@ -1,0 +1,9 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    @apply font-geist bg-paper text-dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
