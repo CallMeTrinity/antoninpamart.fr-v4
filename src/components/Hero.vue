@@ -1,0 +1,106 @@
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useLiveTime } from '@/composables/useLiveTime'
+
+const name = 'Antonin Pamart.'
+const letters = computed(() => Array.from(name))
+
+const { time } = useLiveTime({
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: false,
+})
+</script>
+
+<template>
+  <section
+    id="top"
+    class="hero grid-container flex flex-col justify-between min-h-screen pt-24 pb-8 relative"
+  >
+    <div
+      class="grid grid-cols-3 max-[880px]:grid-cols-2 gap-4 pt-6
+             font-jet text-[11px] uppercase tracking-wider text-muted"
+    >
+      <div>
+        <div class="text-faint mb-1.5">Portfolio · 2026 ed.</div>
+        <div class="text-fg">vol. 04</div>
+      </div>
+      <div>
+        <div class="text-faint mb-1.5">Maintenant</div>
+        <div class="text-fg flex items-center gap-2">
+          <span class="live-dot" />
+          Grenoble · {{ time }}
+        </div>
+      </div>
+      <div class="text-right max-[880px]:hidden">
+        <div class="text-faint mb-1.5">Index</div>
+        <div class="text-fg">01 → 05</div>
+      </div>
+    </div>
+
+    <div>
+      <h1
+        class="hero-name font-geist font-medium m-0 flex flex-wrap"
+        :aria-label="name"
+      >
+        <span
+          v-for="(c, i) in letters"
+          :key="i"
+          class="ch inline-block"
+          :class="{ space: c === ' ' }"
+        >{{ c === ' ' ? ' ' : c }}</span>
+      </h1>
+
+      <div class="hero-lede grid grid-cols-2 max-[880px]:grid-cols-1 items-end gap-[clamp(24px,6vw,96px)] mt-[clamp(32px,6vh,64px)]">
+        <p>
+          Ingénieur &amp; designer, je construis des logiciels
+          <em>petits et soignés</em> — outils, instruments, et l'occasionnel
+          terrier de week-end.
+        </p>
+        <p class="justify-self-end text-right max-[880px]:justify-self-start max-[880px]:text-left">
+          Actuellement chez La Haute Société à Grenoble. Auparavant dans deux startups
+          dont vous n'avez probablement pas entendu parler, ce qui est
+          <em>très bien, honnêtement</em>.
+        </p>
+      </div>
+    </div>
+
+    <div class="flex justify-between items-end font-jet text-[11px] uppercase tracking-wider text-muted">
+      <div class="flex items-center gap-2.5">
+        <span class="scroll-line inline-block w-8 h-px bg-fg animate-scroll-line" />
+        <span>Défilez pour voir les travaux</span>
+      </div>
+      <div>01 — Index</div>
+    </div>
+  </section>
+</template>
+
+<style scoped>
+@reference "../assets/styles/main.css";
+
+.hero-name {
+  font-size: clamp(56px, 13vw, 152px);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+}
+.hero-name .ch {
+  transition: transform .5s cubic-bezier(.2,.7,.3,1), color .35s;
+  will-change: transform;
+}
+.hero-name .ch.space { width: 0.32em; }
+.hero-name:hover .ch { @apply text-faint; }
+.hero-name .ch:hover { @apply text-fg; transform: translateY(-8px); }
+
+.hero-lede p {
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.4;
+  max-width: 36ch;
+  margin: 0;
+  text-wrap: pretty;
+}
+.hero-lede em {
+  @apply font-instrument italic font-normal text-accent;
+  padding: 0 2px;
+}
+</style>

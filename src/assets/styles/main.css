@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @import "./base/base.css";
@@ -7,7 +7,19 @@
 @theme {
     --font-geist: "Geist", sans-serif;
     --font-instrument: "Instrument Serif", serif;
-    --font-jet: "Jetbrain Mono", monospace;
-    --text-dark: #0a0a0a;
+    --font-jet: "JetBrains Mono", monospace;
+
     --color-paper: #f1ece2;
+    --color-fg: #1a1410;
+    --color-muted: rgba(26, 20, 16, 0.58);
+    --color-faint: rgba(26, 20, 16, 0.32);
+    --color-line: rgba(26, 20, 16, 0.14);
+    --color-line-strong: rgba(26, 20, 16, 0.28);
+    --color-panel: rgba(255, 252, 245, 0.7);
+    --color-accent: #5b3a1f;
+    --color-accent-soft: rgba(91, 58, 31, 0.10);
+
+    --animate-dot-pulse: dot-pulse 2.4s ease-in-out infinite;
+    --animate-scroll-line: scroll-line 2s ease-in-out infinite;
+    --animate-marquee: marquee 36s linear infinite;
 }

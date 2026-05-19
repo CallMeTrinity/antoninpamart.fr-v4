@@ -1,16 +1,24 @@
 <script setup lang="ts">
-import type { Component } from 'vue'
-import Header from "@/components/Header.vue";
+import Header from '@/components/Header.vue'
+import Hero from '@/components/Hero.vue'
+import Work from '@/components/Work.vue'
+import About from '@/components/About.vue'
+import Now from '@/components/Now.vue'
+import Contact from '@/components/Contact.vue'
+import Footer from '@/components/Footer.vue'
+import { useScrollReveal } from '@/composables/useScrollReveal'
 
-const sections: Component[] = [
-  Header
-];
+useScrollReveal()
 </script>
 
 <template>
-  <div>
-    <div v-for="(section, index) in sections" :key="index">
-      <component :is="section"/>
-    </div>
-  </div>
+  <Header />
+  <main>
+    <Hero />
+    <Work />
+    <About />
+    <Now />
+    <Contact />
+  </main>
+  <Footer />
 </template>
