@@ -10,54 +10,54 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
-    name: 'Halcyon',
-    year: '2025',
+    name: 'PID — Analyse de survie',
+    year: '2026',
+    role: 'Projet M1 MIAGE',
+    stack: ['Python', 'Streamlit', 'lifelines'],
+    blurb:
+      "Application web interactive d'analyse de survie sur un jeu de 1000 patients. Estimations Kaplan-Meier, régression de Cox, comparaison de sous-populations — le tout pilotable depuis l'UI.",
+    hue: 200,
+    link: 'https://github.com/CallMeTrinity/pid',
+  },
+  {
+    name: 'ProjectRoom',
+    year: '2026',
+    role: 'Projet ILOG',
+    stack: ['Java 25', 'JavaFX', 'SQLite'],
+    blurb:
+      "Application bureau de gestion de projet : Kanban en glisser-déposer, suivi des tâches et réservation de salles avec détection de conflits. Tests JUnit et couverture JaCoCo.",
+    hue: 30,
+    link: 'https://github.com/CallMeTrinity/ilog-projet',
+  },
+  {
+    name: 'QuestLife',
+    year: '2026',
     role: 'Projet solo',
-    stack: ['TypeScript', 'Rust', 'WebGPU'],
+    stack: ['Symfony', 'Vue 3', 'MariaDB'],
     blurb:
-      "Un éditeur de code natif qui traite votre projet comme un graphe plutôt qu'un arbre. Saut vers n'importe où, multi-curseur entre fichiers, et une couche d'inférence qui nomme les variables avant vous.",
-    hue: 18,
-    link: '#',
-  },
-  {
-    name: 'Field Notes',
-    year: '2024',
-    role: 'Co-fondateur',
-    stack: ['Swift', 'CRDT', 'Local-first'],
-    blurb:
-      "Un outil d'écriture offline-first synchronisé via de petits fragments CRDT. Toute l'archive vit sur votre appareil ; le cloud n'est qu'un facteur.",
-    hue: 140,
-    link: '#',
-  },
-  {
-    name: 'Polysynth',
-    year: '2024',
-    role: 'Ingénieur audio',
-    stack: ['C++', 'JUCE', 'WebAudio'],
-    blurb:
-      "Un synthétiseur polyphonique qui tourne en natif et dans le navigateur depuis le même cœur DSP. Compile vers WASM sans allocation dans le thread audio.",
+      "Une app web qui transforme les objectifs quotidiens en quêtes RPG. Auth JWT stateless via LexikJWT, API auto-générée par API Platform 4 à partir des entités Doctrine.",
     hue: 285,
-    link: '#',
+    link: 'https://github.com/CallMeTrinity/QuestLife',
   },
   {
-    name: 'Quietmail',
-    year: '2023',
+    name: 'Sly Verse',
+    year: '2026',
     role: 'Design + ing.',
-    stack: ['Go', 'SQLite', 'HTMX'],
+    stack: ['Craft CMS', 'Twig', 'PHP'],
     blurb:
-      "Triage d'email pour ceux qui détestent l'email. Trois touches pour vider une boîte — les heuristiques sont volontairement bêtes pour que vous gardiez la main.",
-    hue: 220,
-    link: '#',
+      "Site fan dédié au Sly Wrestling Universe : back-office Craft CMS configuré sur-mesure pour gérer catalogues d'images, vidéos et contenus éditoriaux.",
+    hue: 340,
+    link: 'https://github.com/CallMeTrinity/sly-verse-site',
   },
   {
-    name: 'Atlas',
-    year: '2023',
-    role: 'Projet annexe',
-    stack: ['Python', 'Postgres', 'D3'],
+    name: 'FitSass',
+    year: '2025',
+    role: "Projet d'équipe",
+    stack: ['Java', 'JavaFX'],
     blurb:
-      "Un entrepôt de données personnel pour les chiffres ennuyeux — sommeil, courses, livres, cafés. Un tuyau entrant, un dashboard sortant, pas de SaaS analytics.",
-    hue: 50,
-    link: '#',
+      "Générateur de plans d'entraînement basé sur les préférences utilisateur — niveau, objectifs, équipement disponible — pour produire des séances cohérentes.",
+    hue: 140,
+    link: 'https://github.com/CallMeTrinity/FitSass',
   },
 ]
 
