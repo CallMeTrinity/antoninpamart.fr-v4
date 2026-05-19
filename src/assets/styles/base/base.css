@@ -12,8 +12,6 @@ body {
     line-height: 1.45;
 }
 
-a { @apply text-inherit no-underline; }
-button { @apply text-inherit; font: inherit; }
 ::selection { @apply bg-accent text-paper; }
 
 .section {

@@ -45,7 +45,7 @@ const copy = async (e: MouseEvent) => {
 
 const links = [
   { href: 'https://github.com/CallMeTrinity', text: 'GitHub' },
-  { href: '#', text: 'Read.cv' },
+  { href: '/cv_pamart.pdf', text: 'Read.cv', download: 'cv_pamart.pdf' },
   { href: 'https://www.linkedin.com/in/antoninpamart/', text: 'LinkedIn' },
 ]
 </script>
@@ -66,8 +66,8 @@ const links = [
     <a
       ref="ctaRef"
       :href="`mailto:${email}`"
-      class="cta inline-flex items-center gap-3.5 px-7 py-4.5 rounded-full
-             bg-fg text-white font-jet text-[13px] uppercase tracking-widest
+      class="text-paper cta inline-flex items-center gap-3.5 px-7 py-4.5 rounded-full
+             bg-fg font-jet text-[13px] uppercase tracking-widest
              cursor-pointer transition-[background,transform] hover:bg-accent will-change-transform"
       @click="copy"
     >
@@ -80,7 +80,8 @@ const links = [
         v-for="l in links"
         :key="l.text"
         :href="l.href"
-        :download="l.href.includes('cv')"
+        :download="l.href.includes('cv') ? 'cv_pamart.pdf' : undefined"
+        target="_blank"
         class="inline-flex items-center gap-2 transition-colors hover:text-fg after:content-['↗'] after:opacity-50"
       >
         {{ l.text }}

@@ -11,7 +11,7 @@ const updated = computed(() =>
 
 <template>
   <footer
-    class="flex justify-between border-t border-line py-6 px-[var(--pad-x)]
+    class="flex justify-between border-t border-line py-6 px-(--pad-x)
            font-jet text-[11px] uppercase tracking-wider text-muted"
   >
     <span>© {{ year }} · Antonin Pamart</span>
