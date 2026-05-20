@@ -20,7 +20,7 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/CallMeTrinity/pid',
   },
   {
-    name: 'ProjectRoom',
+    name: 'Workflow',
     year: '2026',
     role: 'Projet ILOG',
     stack: ['Java 25', 'JavaFX', 'SQLite'],

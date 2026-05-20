@@ -54,14 +54,11 @@ const { time } = useLiveTime({
 
       <div class="hero-lede grid grid-cols-2 max-[880px]:grid-cols-1 items-end gap-[clamp(24px,6vw,96px)] mt-[clamp(32px,6vh,64px)]">
         <p>
-          Ingénieur &amp; designer, je construis des logiciels
-          <em>petits et soignés</em> — outils, instruments, et l'occasionnel
-          terrier de week-end.
+          Ouvert d'esprit et émotionnellement fermé, je construis des logiciels
+          <em>petits et soignés</em> : outils, sites web, et l'occasionnel application dont j'ai besoin.
         </p>
-        <p class="justify-self-end text-right max-[880px]:justify-self-start max-[880px]:text-left">
-          Actuellement chez La Haute Société à Grenoble. Auparavant dans deux startups
-          dont vous n'avez probablement pas entendu parler, ce qui est
-          <em>très bien, honnêtement</em>.
+        <p class="justify-self-end max-[880px]:justify-self-start text-left">
+          Actuellement chez La Haute Société à Grenoble. J'ai pour objectif d'apprendre continuellement et de pouvoir partager mes connaissances à travers différents projets.
         </p>
       </div>
     </div>

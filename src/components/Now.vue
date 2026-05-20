@@ -40,7 +40,7 @@ const lines = [
     >
       <div class="font-jet text-[11px] uppercase tracking-wider text-muted flex items-center gap-2">
         <span class="live-dot" />
-        Dernière mise à jour<br />19 mai 2026
+        Dernière mise à jour<br />20 mai 2026
       </div>
 
       <div class="grid gap-3">

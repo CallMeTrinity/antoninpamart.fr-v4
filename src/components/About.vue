@@ -28,7 +28,7 @@ const MAX_LEVEL = 5
     <div class="section-head reveal">
       <div class="section-num">03 / À propos</div>
       <h2 class="section-title">
-        Construire des logiciels, c'est surtout <em>tout noter</em>.
+        Adapter, Optimiser, <em>Produire</em>.
       </h2>
     </div>
 
@@ -38,7 +38,7 @@ const MAX_LEVEL = 5
           Je suis Antonin, dev junior à Grenoble. Principalement back-end, mais
           <em>full-stack</em> quand il faut. Actuellement en stage à La Haute
           Société, où j'ai été alternant l'an dernier, et où je devrais l'être
-          à nouveau.
+          à nouveau prochainement.
         </p>
         <p>
           Ce qui me tient à cœur : <em>apprendre</em>, garder les choses
@@ -48,7 +48,7 @@ const MAX_LEVEL = 5
         </p>
         <p>
           En dehors de l'écran : la <em>salle</em>, la course ou le vélo selon
-          l'humeur. Trois disciplines pour la même excuse : rester en vie.
+          l'humeur. Trois disciplines pour la même excuse : rester en <s>bonne santé</s> vie.
         </p>
       </div>
 
