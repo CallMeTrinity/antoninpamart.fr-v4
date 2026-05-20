@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const email = 'contact.antonin.pamart@gmail.fr'
 const ctaRef = ref<HTMLAnchorElement | null>(null)
@@ -56,12 +59,10 @@ const links = [
     class="reveal grid-container pt-[clamp(100px,18vh,200px)] pb-16 text-left"
   >
     <div class="font-jet text-[11px] uppercase tracking-wider text-muted mb-6">
-      05 / Contact
+      {{ $t('contact.sectionNum') }}
     </div>
 
-    <h2 class="contact-title font-geist font-medium m-0 mb-12 text-balance">
-      Des questions ? Des projets ? <em>Contactez-moi</em>.
-    </h2>
+    <h2 class="contact-title font-geist font-medium m-0 mb-12 text-balance" v-html="$t('contact.title')" />
 
     <a
       ref="ctaRef"
@@ -71,7 +72,7 @@ const links = [
              cursor-pointer transition-[background,transform] hover:bg-accent will-change-transform"
       @click="copy"
     >
-      <span>{{ copied ? 'Copié dans le presse-papier' : email }}</span>
+      <span>{{ copied ? t('contact.copied') : email }}</span>
       <span class="arrow transition-transform duration-200">↗</span>
     </a>
 

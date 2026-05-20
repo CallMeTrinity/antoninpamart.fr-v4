@@ -10,16 +10,14 @@ const pad = (n: number) => String(n + 1).padStart(2, '0')
 <template>
   <section id="work" class="section grid-container">
     <div class="section-head reveal">
-      <div class="section-num">02 / Travaux</div>
-      <h2 class="section-title">
-          Des trucs que je fais, souvent sur <em>mon temps libre</em>.
-      </h2>
+      <div class="section-num">{{ $t('work.sectionNum') }}</div>
+      <h2 class="section-title" v-html="$t('work.title')" />
     </div>
 
     <div class="work-list reveal border-t border-line">
       <div
         v-for="(p, i) in PROJECTS"
-        :key="p.name"
+        :key="p.id"
         class="work-row"
         :class="{ expanded: expanded === i }"
         @click="toggle(i)"
@@ -27,7 +25,7 @@ const pad = (n: number) => String(n + 1).padStart(2, '0')
         <template v-if="expanded === i">
           <div class="row-grid">
             <div class="row-idx font-jet text-[11px] text-muted">/ {{ pad(i) }}</div>
-            <div class="row-name">{{ p.name }}</div>
+            <div class="row-name">{{ $t(`work.projects.${p.id}.name`) }}</div>
             <div class="row-stack font-jet text-[11px] uppercase tracking-wider text-muted flex gap-3.5 flex-wrap">
               <span v-for="s in p.stack" :key="s" class="whitespace-nowrap">{{ s }}</span>
             </div>
@@ -37,24 +35,24 @@ const pad = (n: number) => String(n + 1).padStart(2, '0')
           <div class="expanded-body">
             <div></div>
             <div>
-              <div class="col-label">Aperçu</div>
-              <p class="m-0 max-w-[52ch] leading-[1.55]">{{ p.blurb }}</p>
+              <div class="col-label">{{ $t('work.overview') }}</div>
+              <p class="m-0 max-w-[52ch] leading-[1.55]">{{ $t(`work.projects.${p.id}.blurb`) }}</p>
               <div class="flex gap-3 mt-6">
-                <a :href="p.link" class="btn btn-primary" @click.stop>Voir le projet →</a>
-                <a :href="p.link" class="btn" @click.stop>Lire l'article</a>
+                <a :href="p.link" class="btn btn-primary" @click.stop>{{ $t('work.viewProject') }}</a>
+                <a :href="p.link" class="btn" @click.stop>{{ $t('work.readArticle') }}</a>
               </div>
             </div>
             <div class="grid gap-4">
               <div>
-                <div class="col-label">Rôle</div>
-                <div>{{ p.role }}</div>
+                <div class="col-label">{{ $t('work.role') }}</div>
+                <div>{{ $t(`work.projects.${p.id}.role`) }}</div>
               </div>
               <div>
-                <div class="col-label">Année</div>
+                <div class="col-label">{{ $t('work.year') }}</div>
                 <div>{{ p.year }}</div>
               </div>
               <div>
-                <div class="col-label">Stack</div>
+                <div class="col-label">{{ $t('work.stack') }}</div>
                 <div>{{ p.stack.join(' · ') }}</div>
               </div>
             </div>
@@ -63,7 +61,7 @@ const pad = (n: number) => String(n + 1).padStart(2, '0')
 
         <template v-else>
           <div class="row-idx font-jet text-[11px] text-muted">/ {{ pad(i) }}</div>
-          <div class="row-name">{{ p.name }}</div>
+          <div class="row-name">{{ $t(`work.projects.${p.id}.name`) }}</div>
           <div class="row-stack font-jet text-[11px] uppercase tracking-wider text-muted flex gap-3.5 flex-wrap">
             <span v-for="s in p.stack" :key="s" class="whitespace-nowrap">{{ s }}</span>
           </div>
@@ -129,6 +127,11 @@ const pad = (n: number) => String(n + 1).padStart(2, '0')
 }
 .col-label {
   @apply font-jet text-[11px] uppercase tracking-wider text-faint mb-2;
+}
+
+.section-title :deep(em),
+.section-title em {
+  @apply font-instrument italic font-normal text-accent;
 }
 
 .btn {

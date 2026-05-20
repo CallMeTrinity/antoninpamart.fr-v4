@@ -1,0 +1,260 @@
+import { createI18n } from 'vue-i18n'
+
+export type Locale = 'fr' | 'en'
+
+const STORAGE_KEY = 'portfolio-locale'
+
+const detectLocale = (): Locale => {
+  if (typeof window === 'undefined') return 'fr'
+  const stored = window.localStorage.getItem(STORAGE_KEY)
+  if (stored === 'fr' || stored === 'en') return stored
+  return window.navigator.language?.toLowerCase().startsWith('en') ? 'en' : 'fr'
+}
+
+const messages = {
+  fr: {
+    header: {
+      developer: 'Développeur',
+      available: 'Disponible',
+      work: 'Travaux',
+      about: 'À propos',
+      now: 'En ce moment',
+      contact: 'Contact',
+    },
+    hero: {
+      portfolio: 'Portfolio · 2026 éd.',
+      volume: 'vol. 04',
+      nowLabel: 'Maintenant',
+      indexLabel: 'Index',
+      indexRange: '01 → 05',
+      lede1:
+        "Ouvert d'esprit et émotionnellement fermé, je construis des logiciels <em>petits et soignés</em> : outils, sites web, et l'occasionnel application dont j'ai besoin.",
+      lede2:
+        "Actuellement chez La Haute Société à Grenoble. J'ai pour objectif d'apprendre continuellement et de pouvoir partager mes connaissances à travers différents projets.",
+      scroll: 'Défilez pour voir les travaux',
+      indexCount: '01 — Index',
+    },
+    work: {
+      sectionNum: '02 / Travaux',
+      title: 'Des trucs que je fais, souvent sur <em>mon temps libre</em>.',
+      overview: 'Aperçu',
+      role: 'Rôle',
+      year: 'Année',
+      stack: 'Stack',
+      viewProject: 'Voir le projet →',
+      readArticle: "Lire l'article",
+      projects: {
+        pid: {
+          name: 'PID — Analyse de survie',
+          role: 'Projet M1 MIAGE',
+          blurb:
+            "Application web interactive d'analyse de survie sur un jeu de 1000 patients. Estimations Kaplan-Meier, régression de Cox, comparaison de sous-populations — le tout pilotable depuis l'UI.",
+        },
+        workflow: {
+          name: 'Workflow',
+          role: 'Projet ILOG',
+          blurb:
+            'Application bureau de gestion de projet : Kanban en glisser-déposer, suivi des tâches et réservation de salles avec détection de conflits. Tests JUnit et couverture JaCoCo.',
+        },
+        questlife: {
+          name: 'QuestLife',
+          role: 'Projet solo',
+          blurb:
+            "Une app web qui transforme les objectifs quotidiens en quêtes RPG. Auth JWT stateless via LexikJWT, API auto-générée par API Platform 4 à partir des entités Doctrine.",
+        },
+        slyVerse: {
+          name: 'Sly Verse',
+          role: 'Design + ing.',
+          blurb:
+            "Site fan dédié au Sly Wrestling Universe : back-office Craft CMS configuré sur-mesure pour gérer catalogues d'images, vidéos et contenus éditoriaux.",
+        },
+        fitsass: {
+          name: 'FitSass',
+          role: "Projet d'équipe",
+          blurb:
+            "Générateur de plans d'entraînement basé sur les préférences utilisateur — niveau, objectifs, équipement disponible — pour produire des séances cohérentes.",
+        },
+      },
+    },
+    about: {
+      sectionNum: '03 / À propos',
+      title: 'Adapter, Optimiser, <em>Produire</em>.',
+      p1: "Je suis Antonin, dev junior à Grenoble. Principalement back-end, mais <em>full-stack</em> quand il faut. Actuellement en stage à La Haute Société, où j'ai été alternant l'an dernier, et où je devrais l'être à nouveau prochainement.",
+      p2: "Ce qui me tient à cœur : <em>apprendre</em>, garder les choses simples, et résoudre les problèmes plutôt que les contourner. Quand un truc devient compliqué, c'est souvent le signe qu'il faut le repenser.",
+      p3: "En dehors de l'écran : la <em>salle</em>, la course ou le vélo selon l'humeur. Trois disciplines pour la même excuse : rester en <s>bonne santé</s> vie.",
+      studies: 'Études',
+      stack: 'Stack technique',
+      experiences: 'Expériences',
+      studiesList: {
+        miage: 'Master MIAGE · Lyon',
+        mmi: 'BUT MMI · Grenoble',
+      },
+      experiencesList: {
+        lhsStage: 'La Haute Société · Stage',
+        lhsAlt: 'La Haute Société · Alternance',
+        mezcalito: 'Mezcalito · Stage Back-End',
+      },
+    },
+    now: {
+      sectionNum: '04 / En ce moment',
+      title: 'Ce à quoi je pense <em>cette semaine</em>.',
+      updated: 'Dernière mise à jour',
+      updatedDate: '20 mai 2026',
+      lines: {
+        building: {
+          when: 'Je construis',
+          html: 'Des APIs avec Symfony, utilisables depuis son mobile',
+        },
+        reading: {
+          when: 'Je lis',
+          html: "<em>1984</em> (George Orwell) — Me suis dis que c'était le moment.",
+        },
+        listening: {
+          when: "J'écoute",
+          html: 'Techno qui fait pas réfléchir',
+        },
+      },
+    },
+    contact: {
+      sectionNum: '05 / Contact',
+      title: 'Des questions ? Des projets ? <em>Contactez-moi</em>.',
+      copied: 'Copié dans le presse-papier',
+    },
+    footer: {
+      updated: 'Dernière mise à jour',
+    },
+  },
+  en: {
+    header: {
+      developer: 'Developer',
+      available: 'Available',
+      work: 'Work',
+      about: 'About',
+      now: 'Now',
+      contact: 'Contact',
+    },
+    hero: {
+      portfolio: 'Portfolio · 2026 ed.',
+      volume: 'vol. 04',
+      nowLabel: 'Now',
+      indexLabel: 'Index',
+      indexRange: '01 → 05',
+      lede1:
+        'Open-minded and emotionally closed, I build <em>small, polished</em> software: tools, websites, and the occasional app I happen to need.',
+      lede2:
+        'Currently at La Haute Société in Grenoble. My goal is to keep learning continuously and share what I know through varied projects.',
+      scroll: 'Scroll to see the work',
+      indexCount: '01 — Index',
+    },
+    work: {
+      sectionNum: '02 / Work',
+      title: 'Things I make, often on <em>my own time</em>.',
+      overview: 'Overview',
+      role: 'Role',
+      year: 'Year',
+      stack: 'Stack',
+      viewProject: 'View project →',
+      readArticle: 'Read article',
+      projects: {
+        pid: {
+          name: 'PID — Survival analysis',
+          role: 'M1 MIAGE project',
+          blurb:
+            'Interactive web app for survival analysis on a 1000-patient dataset. Kaplan-Meier estimates, Cox regression, sub-population comparison — all driven from the UI.',
+        },
+        workflow: {
+          name: 'Workflow',
+          role: 'ILOG project',
+          blurb:
+            'Desktop project-management app: drag-and-drop Kanban, task tracking, and room booking with conflict detection. JUnit tests and JaCoCo coverage.',
+        },
+        questlife: {
+          name: 'QuestLife',
+          role: 'Solo project',
+          blurb:
+            'A web app that turns daily goals into RPG quests. Stateless JWT auth via LexikJWT, API auto-generated by API Platform 4 from Doctrine entities.',
+        },
+        slyVerse: {
+          name: 'Sly Verse',
+          role: 'Design + eng.',
+          blurb:
+            'Fan site dedicated to the Sly Wrestling Universe: tailor-made Craft CMS back office to manage image, video, and editorial content catalogues.',
+        },
+        fitsass: {
+          name: 'FitSass',
+          role: 'Team project',
+          blurb:
+            'Workout-plan generator based on user preferences — level, goals, available equipment — to produce coherent sessions.',
+        },
+      },
+    },
+    about: {
+      sectionNum: '03 / About',
+      title: 'Adapt, Optimise, <em>Ship</em>.',
+      p1: "I'm Antonin, junior dev in Grenoble. Mostly back-end, but <em>full-stack</em> when needed. Currently interning at La Haute Société, where I was an apprentice last year, and where I should be again soon.",
+      p2: 'What I care about: <em>learning</em>, keeping things simple, and solving problems rather than working around them. When something gets complicated, it usually means it should be rethought.',
+      p3: 'Off-screen: the <em>gym</em>, running, or cycling depending on the mood. Three disciplines, same excuse: staying <s>healthy</s> alive.',
+      studies: 'Studies',
+      stack: 'Tech stack',
+      experiences: 'Experience',
+      studiesList: {
+        miage: 'MIAGE Master · Lyon',
+        mmi: 'BUT MMI · Grenoble',
+      },
+      experiencesList: {
+        lhsStage: 'La Haute Société · Internship',
+        lhsAlt: 'La Haute Société · Apprenticeship',
+        mezcalito: 'Mezcalito · Back-end internship',
+      },
+    },
+    now: {
+      sectionNum: '04 / Right now',
+      title: "What I'm thinking about <em>this week</em>.",
+      updated: 'Last update',
+      updatedDate: 'May 20, 2026',
+      lines: {
+        building: {
+          when: 'Building',
+          html: 'Symfony APIs, usable from your phone',
+        },
+        reading: {
+          when: 'Reading',
+          html: "<em>1984</em> (George Orwell) — Figured it was the right time.",
+        },
+        listening: {
+          when: 'Listening',
+          html: "Techno that doesn't ask you to think",
+        },
+      },
+    },
+    contact: {
+      sectionNum: '05 / Contact',
+      title: 'Questions? Projects? <em>Get in touch</em>.',
+      copied: 'Copied to clipboard',
+    },
+    footer: {
+      updated: 'Last update',
+    },
+  },
+} as const
+
+export const i18n = createI18n({
+  legacy: false,
+  globalInjection: true,
+  locale: detectLocale(),
+  fallbackLocale: 'en',
+  warnHtmlMessage: false,
+  messages,
+})
+
+if (typeof document !== 'undefined') {
+  document.documentElement.lang = i18n.global.locale.value
+}
+
+export function setLocale(locale: Locale) {
+  i18n.global.locale.value = locale
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem(STORAGE_KEY, locale)
+    document.documentElement.lang = locale
+  }
+}

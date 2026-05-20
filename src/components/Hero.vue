@@ -23,19 +23,19 @@ const { time } = useLiveTime({
              font-jet text-[11px] uppercase tracking-wider text-muted"
     >
       <div>
-        <div class="text-faint mb-1.5">Portfolio · 2026 ed.</div>
-        <div class="text-fg">vol. 04</div>
+        <div class="text-faint mb-1.5">{{ $t('hero.portfolio') }}</div>
+        <div class="text-fg">{{ $t('hero.volume') }}</div>
       </div>
       <div>
-        <div class="text-faint mb-1.5">Maintenant</div>
+        <div class="text-faint mb-1.5">{{ $t('hero.nowLabel') }}</div>
         <div class="text-fg flex items-center gap-2">
           <span class="live-dot" />
           Grenoble · {{ time }}
         </div>
       </div>
       <div class="text-right max-[880px]:hidden">
-        <div class="text-faint mb-1.5">Index</div>
-        <div class="text-fg">01 → 05</div>
+        <div class="text-faint mb-1.5">{{ $t('hero.indexLabel') }}</div>
+        <div class="text-fg">{{ $t('hero.indexRange') }}</div>
       </div>
     </div>
 
@@ -53,22 +53,17 @@ const { time } = useLiveTime({
       </h1>
 
       <div class="hero-lede grid grid-cols-2 max-[880px]:grid-cols-1 items-end gap-[clamp(24px,6vw,96px)] mt-[clamp(32px,6vh,64px)]">
-        <p>
-          Ouvert d'esprit et émotionnellement fermé, je construis des logiciels
-          <em>petits et soignés</em> : outils, sites web, et l'occasionnel application dont j'ai besoin.
-        </p>
-        <p class="justify-self-end max-[880px]:justify-self-start text-left">
-          Actuellement chez La Haute Société à Grenoble. J'ai pour objectif d'apprendre continuellement et de pouvoir partager mes connaissances à travers différents projets.
-        </p>
+        <p v-html="$t('hero.lede1')" />
+        <p class="justify-self-end max-[880px]:justify-self-start text-left" v-html="$t('hero.lede2')" />
       </div>
     </div>
 
     <div class="flex justify-between items-end font-jet text-[11px] uppercase tracking-wider text-muted">
       <div class="flex items-center gap-2.5">
         <span class="scroll-line inline-block w-8 h-px bg-fg animate-scroll-line" />
-        <span>Défilez pour voir les travaux</span>
+        <span>{{ $t('hero.scroll') }}</span>
       </div>
-      <div>01 — Index</div>
+      <div>{{ $t('hero.indexCount') }}</div>
     </div>
   </section>
 </template>

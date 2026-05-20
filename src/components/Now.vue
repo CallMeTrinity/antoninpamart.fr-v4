@@ -4,29 +4,14 @@ import { TECH } from '@/data/projects'
 
 const seq = computed(() => [...TECH, ...TECH, ...TECH])
 
-const lines = [
-  {
-    when: 'Je construis',
-    html: 'Des APIs avec Symfony, utilisables depuis son mobile',
-  },
-  {
-    when: 'Je lis',
-    html: "<em>1984</em> (George Orwell) — Me suis dis que c'était le moment.",
-  },
-  {
-    when: "J'écoute",
-    html: 'Techno qui fait pas réfléchir',
-  },
-]
+const lines = ['building', 'reading', 'listening'] as const
 </script>
 
 <template>
   <section id="now" class="section grid-container">
     <div class="section-head reveal">
-      <div class="section-num">04 / En ce moment</div>
-      <h2 class="section-title">
-        Ce à quoi je pense <em>cette semaine</em>.
-      </h2>
+      <div class="section-num">{{ $t('now.sectionNum') }}</div>
+      <h2 class="section-title" v-html="$t('now.title')" />
     </div>
 
     <div
@@ -40,22 +25,22 @@ const lines = [
     >
       <div class="font-jet text-[11px] uppercase tracking-wider text-muted flex items-center gap-2">
         <span class="live-dot" />
-        Dernière mise à jour<br />20 mai 2026
+        {{ $t('now.updated') }}<br />{{ $t('now.updatedDate') }}
       </div>
 
       <div class="grid gap-3">
         <div
-          v-for="(l, i) in lines"
-          :key="i"
+          v-for="l in lines"
+          :key="l"
           class="
             grid grid-cols-[130px_1fr] max-[880px]:grid-cols-1 max-[880px]:gap-1
             gap-4 items-baseline pb-3 border-b border-line last:border-b-0
           "
         >
           <div class="font-jet text-[11px] uppercase tracking-wider text-muted">
-            {{ l.when }}
+            {{ $t(`now.lines.${l}.when`) }}
           </div>
-          <div class="what text-[17px] leading-normal" v-html="l.html" />
+          <div class="what text-[17px] leading-normal" v-html="$t(`now.lines.${l}.html`)" />
         </div>
       </div>
     </div>
@@ -74,6 +59,11 @@ const lines = [
 @reference "../assets/styles/main.css";
 
 .what :deep(em) {
+  @apply font-instrument italic font-normal text-accent;
+}
+
+.section-title :deep(em),
+.section-title em {
   @apply font-instrument italic font-normal text-accent;
 }
 
