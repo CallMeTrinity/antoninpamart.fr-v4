@@ -1,5 +1,5 @@
 export interface Project {
-  id: 'pid' | 'workflow' | 'bingo' | 'slyVerse' | 'fitsass'
+  id: 'pid' | 'workflow' | 'bingo' | 'slyVerse' | 'tempo'
   year: string
   stack: string[]
   hue: number
@@ -36,11 +36,11 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/CallMeTrinity/sly-verse-site',
   },
   {
-    id: 'fitsass',
-    year: '2025',
-    stack: ['Java', 'JavaFX'],
+    id: 'tempo',
+    year: '2026',
+    stack: ['Symfony 8', 'Turbo', 'MariaDB'],
     hue: 140,
-    link: 'https://github.com/CallMeTrinity/FitSass',
+    link: 'https://github.com/CallMeTrinity/tempo',
   },
 ]
 

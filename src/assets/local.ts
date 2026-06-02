@@ -68,11 +68,11 @@ const messages = {
           blurb:
             "Site fan dédié au Sly Wrestling Universe : back-office Craft CMS configuré sur-mesure pour gérer catalogues d'images, vidéos et contenus éditoriaux.",
         },
-        fitsass: {
-          name: 'FitSass',
-          role: "Projet d'équipe",
+        tempo: {
+          name: 'Tempo',
+          role: 'Projet solo',
           blurb:
-            "Générateur de plans d'entraînement basé sur les préférences utilisateur — niveau, objectifs, équipement disponible — pour produire des séances cohérentes.",
+            "Gestionnaire de fiches horaires : saisie semaine par semaine, calcul auto des heures sup et workflow brouillon → soumis → approuvé. Côté admin : validation en bulk et modération des inscriptions.",
         },
       },
     },
@@ -180,11 +180,11 @@ const messages = {
           blurb:
             'Fan site dedicated to the Sly Wrestling Universe: tailor-made Craft CMS back office to manage image, video, and editorial content catalogues.',
         },
-        fitsass: {
-          name: 'FitSass',
-          role: 'Team project',
+        tempo: {
+          name: 'Tempo',
+          role: 'Solo project',
           blurb:
-            'Workout-plan generator based on user preferences — level, goals, available equipment — to produce coherent sessions.',
+            'Timesheet manager: week-by-week entry, automatic overtime calculation, and a draft → submitted → approved workflow. Admin side: bulk validation and signup moderation.',
         },
       },
     },
