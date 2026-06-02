@@ -1,5 +1,5 @@
 export interface Project {
-  id: 'pid' | 'workflow' | 'questlife' | 'slyVerse' | 'fitsass'
+  id: 'pid' | 'workflow' | 'bingo' | 'slyVerse' | 'fitsass'
   year: string
   stack: string[]
   hue: number
@@ -22,11 +22,11 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/CallMeTrinity/ilog-projet',
   },
   {
-    id: 'questlife',
+    id: 'bingo',
     year: '2026',
-    stack: ['Symfony', 'Vue 3', 'MariaDB'],
+    stack: ['Symfony 8', 'Stimulus', 'MariaDB'],
     hue: 285,
-    link: 'https://github.com/CallMeTrinity/QuestLife',
+    link: 'https://github.com/CallMeTrinity/bingo',
   },
   {
     id: 'slyVerse',
