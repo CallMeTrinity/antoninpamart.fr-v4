@@ -41,7 +41,7 @@ const { time } = useLiveTime({
 
     <div>
       <h1
-        class="hero-name font-geist font-medium m-0 flex flex-wrap"
+        class="hero-name font-geist font-medium m-0 flex flex-nowrap"
         :aria-label="name"
       >
         <span
@@ -72,7 +72,7 @@ const { time } = useLiveTime({
 @reference "../assets/styles/main.css";
 
 .hero-name {
-  font-size: clamp(56px, 13vw, 152px);
+  font-size: min(13vw, 152px);
   line-height: 0.92;
   letter-spacing: -0.04em;
 }
