@@ -69,7 +69,8 @@ const links = [
       :href="`mailto:${email}`"
       class="text-paper cta inline-flex items-center gap-3.5 px-7 py-4.5 rounded-full
              bg-fg font-jet text-[13px] uppercase tracking-widest
-             cursor-pointer transition-[background,transform] hover:bg-accent will-change-transform"
+             cursor-pointer transition-[background,transform] hover:bg-accent will-change-transform
+             max-[680px]:w-full max-[680px]:justify-center max-[680px]:text-[11px] max-[680px]:tracking-wider"
       @click="copy"
     >
       <span>{{ copied ? t('contact.copied') : email }}</span>

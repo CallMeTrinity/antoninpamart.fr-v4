@@ -29,11 +29,11 @@ const pad = (n: number) => String(n + 1).padStart(2, '0')
             <div class="row-stack font-jet text-[11px] uppercase tracking-wider text-muted flex gap-3.5 flex-wrap">
               <span v-for="s in p.stack" :key="s" class="whitespace-nowrap">{{ s }}</span>
             </div>
-            <div class="font-jet text-[11px] text-muted">{{ p.year }}</div>
+            <div class="row-year font-jet text-[11px] text-muted">{{ p.year }}</div>
             <div class="row-arr">−</div>
           </div>
           <div class="expanded-body">
-            <div></div>
+            <div class="max-[880px]:hidden"></div>
             <div>
               <div class="col-label">{{ $t('work.overview') }}</div>
               <p class="m-0 max-w-[52ch] leading-[1.55]">{{ $t(`work.projects.${p.id}.blurb`) }}</p>
@@ -65,7 +65,7 @@ const pad = (n: number) => String(n + 1).padStart(2, '0')
           <div class="row-stack font-jet text-[11px] uppercase tracking-wider text-muted flex gap-3.5 flex-wrap">
             <span v-for="s in p.stack" :key="s" class="whitespace-nowrap">{{ s }}</span>
           </div>
-          <div class="font-jet text-[11px] text-muted">{{ p.year }}</div>
+          <div class="row-year font-jet text-[11px] text-muted">{{ p.year }}</div>
           <div class="row-arr">+</div>
         </template>
       </div>
@@ -147,12 +147,12 @@ const pad = (n: number) => String(n + 1).padStart(2, '0')
 @media (max-width: 880px) {
   .work-row,
   .row-grid {
-    grid-template-columns: 32px 1fr auto;
+    grid-template-columns: 32px 1fr 28px;
   }
   .work-row .row-stack,
   .row-grid .row-stack,
-  .work-row .row-arr,
-  .row-grid .row-arr { display: none; }
+  .work-row .row-year,
+  .row-grid .row-year { display: none; }
   .expanded-body { grid-template-columns: 1fr; }
 }
 </style>

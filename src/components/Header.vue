@@ -41,12 +41,12 @@ const locales: Locale[] = ['fr', 'en']
         v-for="item in nav"
         :key="item.href"
         :href="item.href"
-        class="text-muted transition-colors hover:text-fg"
+        class="text-muted transition-colors hover:text-fg max-[680px]:hidden"
       >
         {{ $t(item.key) }}
       </a>
 
-      <div class="flex items-center gap-1.5 pl-4 border-l border-line">
+      <div class="flex items-center gap-1.5 pl-4 border-l border-line max-[680px]:pl-0 max-[680px]:border-l-0">
         <template v-for="(l, i) in locales" :key="l">
           <button
             type="button"
