@@ -1,15 +1,55 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { TECH } from '@/data/projects'
+import { useSectionFx, splitLines, fadeUp } from '@/composables/useSectionFx'
 
 const seq = computed(() => [...TECH, ...TECH, ...TECH])
 
 const lines = ['building', 'reading', 'listening'] as const
+
+const root = ref<HTMLElement | null>(null)
+
+useSectionFx(root, (scope) => {
+  const head = scope.querySelector('.section-head')
+  splitLines(scope.querySelector('.section-title'), head)
+  fadeUp(scope.querySelector('.section-num'), head, { y: 16, duration: 0.7 })
+
+  // Marquee: continuous loop whose speed/direction reacts to scroll velocity.
+  const track = scope.querySelector('.marquee-track')
+  const marquee = scope.querySelector('.marquee')
+  if (track && marquee) {
+    // 3 identical copies in the DOM -> shifting by one copy (-100/3 %) loops seamlessly.
+    const loop = gsap.to(track, {
+      xPercent: -100 / 3,
+      duration: 20,
+      ease: 'none',
+      repeat: -1,
+    })
+
+    let resetTween: gsap.core.Tween | null = null
+    ScrollTrigger.create({
+      trigger: marquee,
+      start: 'top bottom',
+      end: 'bottom top',
+      onUpdate: (self) => {
+        const factor = gsap.utils.clamp(-5, 6, 1 + self.getVelocity() / 300)
+        loop.timeScale(factor)
+        resetTween?.kill()
+        resetTween = gsap.to(loop, { timeScale: 1, duration: 0.5, ease: 'power3.out' })
+      },
+    })
+
+    marquee.addEventListener('mouseenter', () => loop.pause())
+    marquee.addEventListener('mouseleave', () => loop.resume())
+  }
+})
 </script>
 
 <template>
-  <section id="now" class="section grid-container">
-    <div class="section-head reveal">
+  <section id="now" ref="root" class="section grid-container">
+    <div class="section-head">
       <div class="section-num">{{ $t('now.sectionNum') }}</div>
       <h2 class="section-title" v-html="$t('now.title')" />
     </div>
@@ -45,8 +85,8 @@ const lines = ['building', 'reading', 'listening'] as const
       </div>
     </div>
 
-    <div class="marquee reveal overflow-hidden border-y border-line py-7 mt-16 hover:[&_.marquee-track]:[animation-play-state:paused]">
-      <div class="marquee-track flex gap-16 w-max font-geist font-medium text-fg animate-marquee">
+    <div class="marquee reveal overflow-hidden border-y border-line py-7 mt-16">
+      <div class="marquee-track flex gap-16 w-max font-geist font-medium text-fg will-change-transform">
         <span v-for="(s, i) in seq" :key="i">
           {{ s }}<span class="text-accent inline-block px-1.5"> ✦ </span>
         </span>

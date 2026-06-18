@@ -1,20 +1,34 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { PROJECTS } from '@/data/projects'
+import { useSectionFx, splitLines, fadeUp } from '@/composables/useSectionFx'
 
 const expanded = ref<number | null>(null)
 const toggle = (i: number) => (expanded.value = expanded.value === i ? null : i)
 const pad = (n: number) => String(n + 1).padStart(2, '0')
+
+const root = ref<HTMLElement | null>(null)
+
+useSectionFx(root, (scope) => {
+  const head = scope.querySelector('.section-head')
+  splitLines(scope.querySelector('.section-title'), head)
+  fadeUp(scope.querySelector('.section-num'), head, { y: 16, duration: 0.7 })
+  fadeUp(scope.querySelectorAll('.work-row'), scope.querySelector('.work-list'), {
+    y: 30,
+    stagger: 0.1,
+    duration: 0.7,
+  })
+})
 </script>
 
 <template>
-  <section id="work" class="section grid-container">
-    <div class="section-head reveal">
+  <section id="work" ref="root" class="section grid-container">
+    <div class="section-head">
       <div class="section-num">{{ $t('work.sectionNum') }}</div>
       <h2 class="section-title" v-html="$t('work.title')" />
     </div>
 
-    <div class="work-list reveal border-t border-line">
+    <div class="work-list border-t border-line">
       <div
         v-for="(p, i) in PROJECTS"
         :key="p.id"

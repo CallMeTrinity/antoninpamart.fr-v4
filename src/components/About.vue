@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import { gsap } from 'gsap'
+import { useSectionFx, splitLines, fadeUp } from '@/composables/useSectionFx'
+
 const studies = [
   { key: 'about.studiesList.miage', period: '2025 — 2027' },
   { key: 'about.studiesList.mmi', period: '2023 — 2025' },
@@ -21,16 +25,42 @@ const experiences = [
 ]
 
 const MAX_LEVEL = 5
+
+const root = ref<HTMLElement | null>(null)
+
+useSectionFx(root, (scope) => {
+  const head = scope.querySelector('.section-head')
+  splitLines(scope.querySelector('.section-title'), head)
+  fadeUp(scope.querySelector('.section-num'), head, { y: 16, duration: 0.7 })
+
+  const grid = scope.querySelector('.about-grid')
+  fadeUp(scope.querySelectorAll('.prose-col p'), grid, { stagger: 0.12 })
+  fadeUp(scope.querySelectorAll('.about-side > div'), grid, { stagger: 0.12, x: 20, y: 0 })
+
+  // Gauge dots pop in once the side column is in view.
+  const dots = scope.querySelectorAll('.gauge .dot')
+  if (dots.length && grid) {
+    gsap.from(dots, {
+      scale: 0,
+      autoAlpha: 0,
+      transformOrigin: 'center',
+      duration: 0.5,
+      ease: 'back.out(2)',
+      stagger: { each: 0.04, from: 'start' },
+      scrollTrigger: { trigger: grid, start: 'top 75%', once: true },
+    })
+  }
+})
 </script>
 
 <template>
-  <section id="about" class="section grid-container">
-    <div class="section-head reveal">
+  <section id="about" ref="root" class="section grid-container">
+    <div class="section-head">
       <div class="section-num">{{ $t('about.sectionNum') }}</div>
       <h2 class="section-title" v-html="$t('about.title')" />
     </div>
 
-    <div class="about-grid reveal grid grid-cols-2 max-[880px]:grid-cols-1 items-start gap-[clamp(32px,6vw,96px)]">
+    <div class="about-grid grid grid-cols-2 max-[880px]:grid-cols-1 items-start gap-[clamp(32px,6vw,96px)]">
       <div class="prose-col space-y-6">
         <p v-html="$t('about.p1')" />
         <p v-html="$t('about.p2')" />

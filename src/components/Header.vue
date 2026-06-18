@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { useLiveTime } from '@/composables/useLiveTime'
 import { setLocale, type Locale } from '@/assets/local'
+import { scrollToTarget } from '@/composables/useSmoothScroll'
 
 const { time } = useLiveTime({ hour: '2-digit', minute: '2-digit', hour12: false })
 const { locale } = useI18n()
@@ -12,6 +13,11 @@ const nav: { href: string; key: string }[] = [
   { href: '#now', key: 'header.now' },
   { href: '#contact', key: 'header.contact' },
 ]
+
+const onNavClick = (e: MouseEvent, href: string) => {
+  e.preventDefault()
+  scrollToTarget(href)
+}
 
 const locales: Locale[] = ['fr', 'en']
 </script>
@@ -42,6 +48,7 @@ const locales: Locale[] = ['fr', 'en']
         :key="item.href"
         :href="item.href"
         class="text-muted transition-colors hover:text-fg max-[680px]:hidden"
+        @click="onNavClick($event, item.href)"
       >
         {{ $t(item.key) }}
       </a>
