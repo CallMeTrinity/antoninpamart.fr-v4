@@ -52,8 +52,8 @@ useSectionFx(root, (scope) => {
               <div class="col-label">{{ $t('work.overview') }}</div>
               <p class="m-0 max-w-[52ch] leading-[1.55]">{{ $t(`work.projects.${p.id}.blurb`) }}</p>
               <div class="flex gap-3 mt-6">
-                <a :href="p.link" class="btn btn-primary" @click.stop>{{ $t('work.viewProject') }}</a>
-                <a :href="p.link" class="btn" @click.stop>{{ $t('work.readArticle') }}</a>
+                <a v-if="p.url !== ''" :href="p.url" class="btn btn-primary" target="_blank" @click.stop>{{ $t('work.viewProject') }}</a>
+                <a :href="p.github" class="btn" target="_blank" @click.stop>{{ $t('work.viewGithub') }}</a>
               </div>
             </div>
             <div class="grid gap-4">

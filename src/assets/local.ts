@@ -42,7 +42,7 @@ const messages = {
       year: 'Année',
       stack: 'Stack',
       viewProject: 'Voir le projet →',
-      readArticle: "Lire l'article",
+      viewGithub: "Voir le code",
       projects: {
         pid: {
           name: 'PID — Analyse de survie',
@@ -74,6 +74,12 @@ const messages = {
           blurb:
             "Gestionnaire de fiches horaires : saisie semaine par semaine, calcul auto des heures sup et workflow brouillon → soumis → approuvé. Côté admin : validation en bulk et modération des inscriptions.",
         },
+        formations: {
+          name: 'Formations',
+          role: 'Projet solo',
+          blurb:
+            "Site de formation en ligne : fait entièrement en Symfony 8, basé sur un système de formations markdown faites par l'IA qui sont converties en formations accessibles sur le site.",
+        }
       },
     },
     about: {
@@ -154,7 +160,7 @@ const messages = {
       year: 'Year',
       stack: 'Stack',
       viewProject: 'View project →',
-      readArticle: 'Read article',
+      viewGithub: 'View code',
       projects: {
         pid: {
           name: 'PID — Survival analysis',
@@ -186,6 +192,12 @@ const messages = {
           blurb:
             'Timesheet manager: week-by-week entry, automatic overtime calculation, and a draft → submitted → approved workflow. Admin side: bulk validation and signup moderation.',
         },
+        formations: {
+          name: 'Formations',
+          role: 'Solo project',
+          blurb:
+            'Online training site: 100% Symfony 8, built on a markdown-based training system that is converted to accessible online courses.',
+        }
       },
     },
     about: {
