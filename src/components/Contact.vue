@@ -6,7 +6,7 @@ import { useSectionFx, splitLines, fadeUp } from '@/composables/useSectionFx'
 
 const { t } = useI18n()
 
-const email = 'contact.antonin.pamart@gmail.fr'
+const email = 'contact.antonin.pamart@gmail.com'
 const root = ref<HTMLElement | null>(null)
 const ctaRef = ref<HTMLAnchorElement | null>(null)
 const copied = ref(false)
