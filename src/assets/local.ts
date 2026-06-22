@@ -79,7 +79,13 @@ const messages = {
           role: 'Projet solo',
           blurb:
             "Site de formation en ligne : fait entièrement en Symfony 8, basé sur un système de formations markdown faites par l'IA qui sont converties en formations accessibles sur le site.",
-        }
+        },
+        villardApi: {
+          name: 'Villard API',
+          role: 'Projet solo',
+          blurb:
+            "Application personnelle et auto-hébergée de gestion d'un appartement familial : planning d'occupation (qui occupe le logement et quand) et suivi d'inventaire (linge, vaisselle, équipement, courses récurrentes, état des lieux. Ce dépôt contient uniquement le backend API. La SPA Vue 3 vit dans un dépôt séparé (villard-front).",
+        },
       },
     },
     about: {
@@ -197,7 +203,13 @@ const messages = {
           role: 'Solo project',
           blurb:
             'Online training site: 100% Symfony 8, built on a markdown-based training system that is converted to accessible online courses.',
-        }
+        },
+        villardApi: {
+          name: 'Villard API',
+          role: 'Solo project',
+          blurb:
+            'Personal, self-hosted app for managing a family apartment: occupancy planning (who is staying and when) and inventory tracking (linen, dishes, equipment, recurring groceries, condition reports). This repo contains the backend API only. The Vue 3 SPA lives in a separate repo (villard-front).',
+        },
       },
     },
     about: {

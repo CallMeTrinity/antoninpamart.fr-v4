@@ -1,5 +1,5 @@
 export interface Project {
-  id: 'pid' | 'workflow' | 'bingo' | 'slyVerse' | 'tempo' | 'formations'
+  id: 'pid' | 'workflow' | 'bingo' | 'slyVerse' | 'tempo' | 'formations' | 'villardApi'
   year: string
   stack: string[]
   hue: number
@@ -56,8 +56,16 @@ export const PROJECTS: Project[] = [
     url: "https://formations.antoninpamart.fr/",
     github: 'https://github.com/CallMeTrinity/formations',
   },
+  {
+    id: 'villardApi',
+    year: '2026',
+    stack: ['Symfony 8', 'Api Platform', 'SMTP'],
+    hue: 10,
+    url: "https://villard-api.antoninpamart.fr/api",
+    github: 'https://github.com/marmottes-industries/villard-api',
+  }
 ]
 
 export const TECH = [
-  'Symfony', 'Craft CMS', 'Tailwind CSS', 'TypeScript', 'Vue', 'Python', 'Java', 'GSAP'
+  'Symfony', 'Craft CMS', 'Tailwind CSS', 'TypeScript', 'Vue', 'Python', 'Java', 'GSAP', 'Api Platform'
 ]
