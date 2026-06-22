@@ -1,14 +1,160 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="fr">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/tntLogo.svg">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Antonin Pamart</title>
-      <link rel="stylesheet" href="/src/assets/styles/main.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary meta -->
+    <title>Antonin Pamart — Développeur web full-stack à Grenoble &amp; Lyon</title>
+    <meta
+      name="description"
+      content="Antonin Pamart, développeur web full-stack à Grenoble et Lyon. Spécialisé en Symfony, Vue.js et API Platform. Portfolio de projets de code, applications web et outils sur-mesure."
+    />
+    <meta
+      name="keywords"
+      content="Antonin Pamart, développeur web, développeur Grenoble, développeur Lyon, développeur full-stack, Symfony, Vue.js, API Platform, portfolio développeur, projet de code, développeur freelance Grenoble, développeur freelance Lyon"
+    />
+    <meta name="author" content="Antonin Pamart" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="theme-color" content="#f1ece2" />
+    <link rel="canonical" href="https://antoninpamart.fr/" />
+
+    <!-- Alternate languages -->
+    <link rel="alternate" hreflang="fr" href="https://antoninpamart.fr/" />
+    <link rel="alternate" hreflang="en" href="https://antoninpamart.fr/" />
+    <link rel="alternate" hreflang="x-default" href="https://antoninpamart.fr/" />
+
+    <!-- Icons & manifest -->
+    <link rel="icon" href="/tntLogo.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/tntLogo.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Antonin Pamart" />
+    <meta property="og:title" content="Antonin Pamart — Développeur web full-stack à Grenoble &amp; Lyon" />
+    <meta
+      property="og:description"
+      content="Développeur web full-stack à Grenoble et Lyon. Symfony, Vue.js, API Platform. Portfolio de projets de code et d'applications web."
+    />
+    <meta property="og:url" content="https://antoninpamart.fr/" />
+    <meta property="og:image" content="https://antoninpamart.fr/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Antonin Pamart, développeur web full-stack" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Antonin Pamart — Développeur web full-stack à Grenoble &amp; Lyon" />
+    <meta
+      name="twitter:description"
+      content="Développeur web full-stack à Grenoble et Lyon. Symfony, Vue.js, API Platform. Portfolio de projets de code."
+    />
+    <meta name="twitter:image" content="https://antoninpamart.fr/og-image.png" />
+    <meta name="twitter:image:alt" content="Antonin Pamart, développeur web full-stack" />
+
+    <!-- Performance: preconnect to font CDNs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Structured data: Person -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Antonin Pamart",
+        "givenName": "Antonin",
+        "familyName": "Pamart",
+        "url": "https://antoninpamart.fr/",
+        "image": "https://antoninpamart.fr/og-image.png",
+        "jobTitle": "Développeur web full-stack",
+        "description": "Développeur web full-stack à Grenoble et Lyon, spécialisé en Symfony, Vue.js et API Platform.",
+        "knowsAbout": [
+          "Symfony",
+          "Vue.js",
+          "API Platform",
+          "PHP",
+          "TypeScript",
+          "Craft CMS",
+          "Tailwind CSS",
+          "Python",
+          "Java",
+          "Développement web full-stack"
+        ],
+        "worksFor": {
+          "@type": "Organization",
+          "name": "La Haute Société",
+          "url": "https://lahautesociete.com/"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Grenoble",
+          "addressRegion": "Auvergne-Rhône-Alpes",
+          "addressCountry": "FR"
+        },
+        "alumniOf": [
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "Polytech Lyon — Université Claude Bernard Lyon 1"
+          }
+        ],
+        "sameAs": [
+          "https://github.com/CallMeTrinity",
+          "https://www.linkedin.com/in/antoninpamart/"
+        ]
+      }
+    </script>
+
+    <!-- Structured data: WebSite -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Antonin Pamart — Portfolio",
+        "url": "https://antoninpamart.fr/",
+        "inLanguage": ["fr", "en"],
+        "author": {
+          "@type": "Person",
+          "name": "Antonin Pamart"
+        }
+      }
+    </script>
+
+    <link rel="stylesheet" href="/src/assets/styles/main.css" />
   </head>
   <body>
     <div id="app"></div>
+
+    <!-- Crawlable fallback for clients without JavaScript (and a safety net for crawlers) -->
+    <noscript>
+      <main style="max-width: 720px; margin: 0 auto; padding: 48px 24px; font-family: sans-serif; color: #1a1410; background: #f1ece2;">
+        <h1>Antonin Pamart — Développeur web full-stack à Grenoble &amp; Lyon</h1>
+        <p>
+          Développeur web full-stack basé entre Grenoble et Lyon. Je conçois des applications
+          web, des outils et des API sur-mesure, principalement avec Symfony, Vue.js et API Platform.
+          Actuellement chez La Haute Société à Grenoble.
+        </p>
+        <h2>Projets de code</h2>
+        <ul>
+          <li><strong>PID — Analyse de survie</strong> : application web d'analyse de survie (Python, Streamlit). <a href="https://github.com/CallMeTrinity/pid">Code</a></li>
+          <li><strong>Workflow</strong> : application bureau de gestion de projet (Java, JavaFX). <a href="https://github.com/CallMeTrinity/ilog-projet">Code</a></li>
+          <li><strong>Bingo</strong> : grilles de défis (Symfony, Stimulus, PWA). <a href="https://bingo.antoninpamart.fr/">Site</a> · <a href="https://github.com/CallMeTrinity/bingo">Code</a></li>
+          <li><strong>Sly Verse</strong> : site fan avec back-office Craft CMS. <a href="https://slywrestlinguniverse.fr/">Site</a></li>
+          <li><strong>Tempo</strong> : gestionnaire de fiches horaires (Symfony, Turbo). <a href="https://tempo.antoninpamart.fr/">Site</a> · <a href="https://github.com/CallMeTrinity/tempo">Code</a></li>
+          <li><strong>Formations</strong> : site de formation en ligne (Symfony 8). <a href="https://formations.antoninpamart.fr/">Site</a> · <a href="https://github.com/CallMeTrinity/formations">Code</a></li>
+          <li><strong>Villard API</strong> : application auto-hébergée de gestion d'appartement (Symfony 8, API Platform). <a href="https://github.com/marmottes-industries/villard-api">Code</a></li>
+        </ul>
+        <h2>Contact</h2>
+        <p>
+          <a href="mailto:contact.antonin.pamart@gmail.com">contact.antonin.pamart@gmail.com</a> ·
+          <a href="https://github.com/CallMeTrinity">GitHub</a> ·
+          <a href="https://www.linkedin.com/in/antoninpamart/">LinkedIn</a>
+        </p>
+      </main>
+    </noscript>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

@@ -34,7 +34,13 @@ useSectionFx(root, (scope) => {
         :key="p.id"
         class="work-row"
         :class="{ expanded: expanded === i }"
+        role="button"
+        tabindex="0"
+        :aria-expanded="expanded === i"
+        :aria-label="$t(`work.projects.${p.id}.name`)"
         @click="toggle(i)"
+        @keydown.enter.prevent="toggle(i)"
+        @keydown.space.prevent="toggle(i)"
       >
         <template v-if="expanded === i">
           <div class="row-grid">
@@ -52,8 +58,8 @@ useSectionFx(root, (scope) => {
               <div class="col-label">{{ $t('work.overview') }}</div>
               <p class="m-0 max-w-[52ch] leading-[1.55]">{{ $t(`work.projects.${p.id}.blurb`) }}</p>
               <div class="flex gap-3 mt-6">
-                <a v-if="p.url !== ''" :href="p.url" class="btn btn-primary" target="_blank" @click.stop>{{ $t('work.viewProject') }}</a>
-                <a :href="p.github" class="btn" target="_blank" @click.stop>{{ $t('work.viewGithub') }}</a>
+                <a v-if="p.url !== ''" :href="p.url" class="btn btn-primary" target="_blank" rel="noopener noreferrer" @click.stop>{{ $t('work.viewProject') }}</a>
+                <a :href="p.github" class="btn" target="_blank" rel="noopener noreferrer" @click.stop>{{ $t('work.viewGithub') }}</a>
               </div>
             </div>
             <div class="grid gap-4">

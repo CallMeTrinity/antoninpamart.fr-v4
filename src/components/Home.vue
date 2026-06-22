@@ -28,12 +28,13 @@ onUnmounted(() => {
 </script>
 
 <template>
+  <a class="skip-link" href="#main">Aller au contenu</a>
   <Preloader />
   <CustomCursor />
   <Header />
   <div id="smooth-wrapper">
     <div id="smooth-content">
-      <main>
+      <main id="main">
         <Hero />
         <Work />
         <About />

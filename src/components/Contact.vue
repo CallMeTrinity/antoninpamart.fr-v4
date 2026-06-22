@@ -119,6 +119,7 @@ const links = [
         :href="l.href"
         :download="l.href.includes('cv') ? 'cv_pamart.pdf' : undefined"
         target="_blank"
+        rel="noopener noreferrer"
         class="inline-flex items-center gap-2 transition-colors hover:text-fg after:content-['↗'] after:opacity-50"
       >
         {{ l.text }}

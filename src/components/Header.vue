@@ -24,6 +24,7 @@ const locales: Locale[] = ['fr', 'en']
 
 <template>
   <nav
+    aria-label="Navigation principale"
     class="
       fixed inset-x-0 top-0 z-40
       grid items-center gap-6
@@ -53,13 +54,18 @@ const locales: Locale[] = ['fr', 'en']
         {{ $t(item.key) }}
       </a>
 
-      <div class="flex items-center gap-1.5 pl-4 border-l border-line max-[680px]:pl-0 max-[680px]:border-l-0">
+      <div
+        class="flex items-center gap-1.5 pl-4 border-l border-line max-[680px]:pl-0 max-[680px]:border-l-0"
+        role="group"
+        aria-label="Changer de langue"
+      >
         <template v-for="(l, i) in locales" :key="l">
           <button
             type="button"
             class="transition-colors cursor-pointer"
             :class="locale === l ? 'text-fg' : 'text-muted hover:text-fg'"
             :aria-pressed="locale === l"
+            :aria-label="l === 'fr' ? 'Français' : 'English'"
             @click="setLocale(l)"
           >
             {{ l.toUpperCase() }}

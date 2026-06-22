@@ -1,0 +1,18 @@
+{
+  "name": "Antonin Pamart — Développeur web",
+  "short_name": "A. Pamart",
+  "description": "Portfolio d'Antonin Pamart, développeur web full-stack à Grenoble et Lyon.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f1ece2",
+  "theme_color": "#f1ece2",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/tntLogo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
