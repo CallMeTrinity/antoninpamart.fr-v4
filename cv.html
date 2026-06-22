@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>cv_pamart</title>
+
+  <!--
+  ============================================================================
+   CV Antonin Pamart — fichier perso, non publié sur le web.
+   Usage : ouvre ce fichier dans un navigateur, puis Imprimer → "Enregistrer
+   en PDF" (format A4, marges "Aucune", cocher "Graphiques d'arrière-plan").
+   Mets ensuite le PDF dans public/ (ex. public/cv_pamart.pdf).
+
+   À ÉDITER FACILEMENT :
+   - Téléphone : remplace le numéro plus bas dans la section CONTACT.
+   - Afficher / masquer le téléphone : change SHOW_PHONE ci-dessous
+       (false = version "publique" sans tel, true = version perso avec tel).
+   - Photo : dépose ton image dans src/assets/images/pp.png
+   - Tout le reste du contenu est en clair dans le <body>.
+  ============================================================================
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ---- Palette reprise du portfolio ---- */
+    :root {
+      --paper: #f1ece2;
+      --fg: #1a1410;
+      --muted: rgba(26, 20, 16, 0.58);
+      --faint: rgba(26, 20, 16, 0.32);
+      --line: rgba(26, 20, 16, 0.14);
+      --line-strong: rgba(26, 20, 16, 0.28);
+      --accent: #5b3a1f;
+      --accent-soft: rgba(91, 58, 31, 0.10);
+
+      --font-sans: "Geist", system-ui, sans-serif;
+      --font-serif: "Instrument Serif", serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: #d9d3c7;
+      color: var(--fg);
+      font-family: var(--font-sans);
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    em, .serif {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ---- Feuille A4 ---- */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 14mm 14mm 12mm;
+      display: flex;
+      flex-direction: column;
+      gap: 9mm;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    /* ---- En-tête ---- */
+    header.head {
+      display: grid;
+      grid-template-columns: 26mm 1fr;
+      gap: 8mm;
+      align-items: center;
+      padding-bottom: 7mm;
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .photo {
+      width: 26mm;
+      height: 26mm;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 1px solid var(--line-strong);
+      background: var(--accent-soft);
+      display: block;
+    }
+    /* Fallback si l'image n'est pas encore là */
+    .photo.broken {
+      display: grid;
+      place-items: center;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--accent);
+    }
+
+    .name {
+      font-size: 34px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .role {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-top: 7px;
+    }
+    .lede {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 9px;
+      max-width: 135mm;
+    }
+
+    /* ---- Deux colonnes ---- */
+    .body {
+      display: grid;
+      grid-template-columns: 58mm 1fr;
+      gap: 10mm;
+      flex: 1;
+    }
+    .sidebar { display: flex; flex-direction: column; gap: 7mm; }
+    .main { display: flex; flex-direction: column; gap: 7mm; }
+
+    /* ---- Titres de section ---- */
+    .sec-head {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      padding-bottom: 4px;
+      margin-bottom: 9px;
+      border-bottom: 1px solid var(--line);
+    }
+    .sec-head b { color: var(--fg); font-weight: 500; }
+
+    /* ---- Blocs contact ---- */
+    .kv { display: flex; flex-direction: column; gap: 6px; }
+    .kv .row {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .kv .lbl {
+      font-family: var(--font-mono);
+      font-size: 8.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--faint);
+    }
+    .kv .val { font-size: 12px; }
+
+    /* Téléphone masquable */
+    body:not(.show-phone) .phone-row { display: none; }
+
+    /* ---- Tags / stack ---- */
+    .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      letter-spacing: 0.02em;
+      padding: 3px 8px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      color: var(--fg);
+      white-space: nowrap;
+    }
+
+    /* ---- Listes (langues, intérêts) ---- */
+    .list { display: flex; flex-direction: column; gap: 6px; }
+    .list .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 12px;
+    }
+    .list .item .meta {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ---- Entrées (expériences / formation / projets) ---- */
+    .entry { margin-bottom: 8px; }
+    .entry:last-child { margin-bottom: 0; }
+    .entry .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .entry .title { font-size: 13px; font-weight: 500; letter-spacing: -0.01em; }
+    .entry .when {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+    .entry .org { font-size: 11px; color: var(--accent); margin-top: 1px; }
+    .entry .desc { font-size: 11px; color: var(--muted); margin-top: 4px; }
+    .entry .stack {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--faint);
+      margin-top: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    .more {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+    .more b { color: var(--accent); font-weight: 500; }
+
+    /* ---- Impression ---- */
+    @page { size: A4; margin: 0; }
+    @media print {
+      html, body { background: #fff; }
+      .page {
+        margin: 0;
+        box-shadow: none;
+        width: 210mm;
+        min-height: 297mm;
+      }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .screen-only { display: none !important; }
+    }
+
+    /* Barre d'aide visible à l'écran uniquement */
+    .helpbar {
+      max-width: 210mm;
+      margin: 12px auto -8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #5b5246;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .helpbar button {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 5px 12px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--fg);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- ====== CONFIG : afficher le téléphone ? ======
+       false = version publique (tel masqué) | true = version perso (tel affiché)
+       Le bouton "Afficher tél." en haut (écran seulement) fait le même effet. -->
+  <script>
+    const SHOW_PHONE = false;
+    if (SHOW_PHONE) document.documentElement.dataset.phone = "on";
+  </script>
+
+  <!-- Aide à l'écran (n'apparaît pas dans le PDF) -->
+  <div class="helpbar screen-only">
+    <span>Imprimer → Enregistrer en PDF · A4 · marges "Aucune" · cocher arrière-plans.</span>
+    <button id="togglePhone" type="button">Afficher / masquer tél.</button>
+  </div>
+
+  <main class="page">
+    <!-- ============================ EN-TÊTE ============================ -->
+    <header class="head">
+      <img
+        class="photo"
+        src="src/assets/images/pp.png"
+        alt="Antonin Pamart"
+        onerror="this.classList.add('broken'); this.removeAttribute('src'); this.replaceWith(Object.assign(document.createElement('div'),{className:'photo broken',textContent:'AP'}));"
+      />
+      <div>
+        <div class="name">Antonin Pamart</div>
+        <div class="role">Développeur web · Lyon / Grenoble</div>
+        <p class="lede">
+          Développeur web passionné possédant de solides capacités
+          d'<em>adaptation</em>, je transforme rapidement mes connaissances en
+          compétences pour créer des solutions innovantes et efficaces.
+        </p>
+      </div>
+    </header>
+
+    <!-- ============================ CORPS ============================ -->
+    <div class="body">
+
+      <!-- ---------------------- COLONNE GAUCHE ---------------------- -->
+      <aside class="sidebar">
+
+        <section>
+          <div class="sec-head"><b>Contact</b></div>
+          <div class="kv">
+            <div class="row">
+              <span class="lbl">Email</span>
+              <a class="val" href="mailto:contact.antonin.pamart@gmail.com">contact.antonin.pamart@gmail.com</a>
+            </div>
+            <div class="row phone-row">
+              <span class="lbl">Téléphone</span>
+              <!-- ↓↓↓ REMPLACE par ton vrai numéro ↓↓↓ -->
+              <span class="val">+33615264351 </span>
+            </div>
+            <div class="row">
+              <span class="lbl">Site</span>
+              <a class="val" href="https://www.antoninpamart.fr">antoninpamart.fr</a>
+            </div>
+            <div class="row">
+              <span class="lbl">GitHub</span>
+              <a class="val" href="https://github.com/CallMeTrinity">github.com/CallMeTrinity</a>
+            </div>
+            <div class="row">
+              <span class="lbl">LinkedIn</span>
+              <a class="val" href="https://www.linkedin.com/in/antoninpamart/">in/antoninpamart</a>
+            </div>
+            <div class="row">
+              <span class="lbl">Mobilité</span>
+              <span class="val">Permis B</span>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="sec-head"><b>Stack technique</b></div>
+          <div class="tags">
+            <span class="tag">Symfony</span>
+            <span class="tag">API Platform</span>
+            <span class="tag">PHP</span>
+            <span class="tag">Vue</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Tailwind</span>
+            <span class="tag">Craft CMS</span>
+            <span class="tag">Python</span>
+            <span class="tag">Java</span>
+            <span class="tag">GSAP</span>
+            <span class="tag">Docker</span>
+            <span class="tag">MariaDB</span>
+          </div>
+        </section>
+
+        <section>
+          <div class="sec-head"><b>Langues</b></div>
+          <div class="list">
+            <div class="item"><span>Français</span><span class="meta">Langue maternelle</span></div>
+            <div class="item"><span>Anglais</span><span class="meta">C1</span></div>
+          </div>
+        </section>
+
+        <section>
+          <div class="sec-head"><b>Centres d'intérêt</b></div>
+          <div class="list">
+            <div class="item"><span>Sport</span><span class="meta">Vélo · course/trail · salle</span></div>
+            <div class="item"><span>Jeux de réflexion</span><span class="meta">Échecs · sudoku</span></div>
+          </div>
+        </section>
+
+        <section>
+          <div class="sec-head"><b>04 / Formation</b></div>
+          <div class="entry">
+            <div class="top">
+              <span class="title">Master MIAGE BI</span>
+              <span class="when">2025 — 2027</span>
+            </div>
+            <div class="org">Polytech Lyon · Université Claude Bernard Lyon 1</div>
+          </div>
+          <div class="entry">
+            <div class="top">
+              <span class="title">BUT MMI</span>
+              <span class="when">2022 — 2025</span>
+            </div>
+            <div class="org">IUT1 · Grenoble</div>
+          </div>
+          <div class="entry">
+            <div class="top">
+              <span class="title">Bac S — Sciences de l'ingénieur</span>
+              <span class="when">2022</span>
+            </div>
+              <div class="org">Lycée la Martinière Monplaisir · Lyon</div>
+          </div>
+        </section>
+      </aside>
+
+      <!-- ---------------------- COLONNE DROITE ---------------------- -->
+      <div class="main">
+
+        <section>
+          <div class="sec-head">02 / <b>Expériences</b></div>
+
+          <div class="entry">
+            <div class="top">
+              <span class="title">Développeur web — Stage</span>
+              <span class="when">Mai — Août 2026</span>
+            </div>
+            <div class="org">La Haute Société · Grenoble</div>
+            <div class="desc">
+              Agence digitale, pôle Code. Développement back-end et full-stack
+              sur des projets clients. Participation à l'initiative d'intégration
+              de l'IA dans les workflows de l'équipe.
+            </div>
+          </div>
+
+          <div class="entry">
+            <div class="top">
+              <span class="title">Développeur web — Alternance</span>
+              <span class="when">Sept. 2024 — Août 2025</span>
+            </div>
+            <div class="org">La Haute Société · Grenoble</div>
+            <div class="desc">
+              Développement de sites et d'applications web (Symfony, Craft CMS,
+              Vue). Montée en autonomie sur des projets clients de bout en bout.
+            </div>
+          </div>
+
+          <div class="entry">
+            <div class="top">
+              <span class="title">Développeur back-end — Stage</span>
+              <span class="when">Janv. — Avril 2024</span>
+            </div>
+            <div class="org">Mezcalito · Grenoble</div>
+            <div class="desc">
+              Développement back-end au sein d'une agence web. Première
+              expérience professionnelle sur des projets en production.
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="sec-head">03 / <b>Projets sélectionnés</b></div>
+
+          <div class="entry">
+            <div class="top">
+              <span class="title">Villard API</span>
+              <span class="when">2026</span>
+            </div>
+            <div class="desc">
+              Application personnelle auto-hébergée de gestion d'un appartement
+              familial : planning d'occupation et suivi d'inventaire. Backend API
+              ; SPA Vue 3 dans un dépôt séparé. Déployée via Docker + GitHub Actions.
+            </div>
+            <div class="stack">Symfony 8 · API Platform · Docker · SMTP</div>
+          </div>
+
+          <div class="entry">
+            <div class="top">
+              <span class="title">Formations</span>
+              <span class="when">2026</span>
+            </div>
+            <div class="desc">
+              Site de formation en ligne : système de cours en markdown générés
+              par IA, convertis en formations accessibles sur le site.
+            </div>
+            <div class="stack">Symfony 8 · GSAP · MariaDB · Turbo</div>
+          </div>
+
+          <div class="entry">
+            <div class="top">
+              <span class="title">Tempo</span>
+              <span class="when">2026</span>
+            </div>
+            <div class="desc">
+              Gestionnaire de fiches horaires : saisie hebdomadaire, calcul auto
+              des heures sup, workflow brouillon → soumis → approuvé, validation
+              en bulk côté admin.
+            </div>
+            <div class="stack">Symfony 8 · Turbo · MariaDB</div>
+          </div>
+
+          <div class="entry">
+            <div class="top">
+              <span class="title">Bingo</span>
+              <span class="when">2026</span>
+            </div>
+            <div class="desc">
+              Application qui transforme des envies en grilles de défis : toggle
+              des cases via Stimulus, détection des lignes côté serveur,
+              mode PWA hors-ligne.
+            </div>
+            <div class="stack">Symfony 8 · Stimulus · MariaDB</div>
+          </div>
+
+          <div class="more">
+            Plus de projets sur <b>github.com/CallMeTrinity</b>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Toggle téléphone (écran) — applique aussi l'état initial de SHOW_PHONE
+    function applyPhone() {
+      document.body.classList.toggle('show-phone', document.documentElement.dataset.phone === 'on');
+    }
+    applyPhone();
+    document.getElementById('togglePhone')?.addEventListener('click', () => {
+      document.documentElement.dataset.phone =
+        document.documentElement.dataset.phone === 'on' ? 'off' : 'on';
+      applyPhone();
+    });
+  </script>
+</body>
+</html>
