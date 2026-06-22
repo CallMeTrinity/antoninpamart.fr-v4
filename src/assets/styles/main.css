@@ -3,6 +3,7 @@
 
 @import "./base/base.css";
 @import "./base/grid.css";
+@import "./base/btn.css";
 
 @theme {
     --font-geist: "Geist", sans-serif;

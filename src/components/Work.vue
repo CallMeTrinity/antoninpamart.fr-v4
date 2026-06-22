@@ -148,16 +148,6 @@ useSectionFx(root, (scope) => {
   @apply font-instrument italic font-normal text-accent;
 }
 
-.btn {
-  @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-full
-         border border-line-strong bg-transparent text-fg
-         font-jet text-[11px] uppercase tracking-wider cursor-pointer;
-  transition: background .2s, border-color .2s, color .2s;
-}
-.btn:hover { @apply bg-accent text-paper border-accent; }
-.btn-primary { @apply bg-fg text-paper border-fg; }
-.btn-primary:hover { @apply bg-accent border-accent; }
-
 @media (max-width: 880px) {
   .work-row,
   .row-grid {

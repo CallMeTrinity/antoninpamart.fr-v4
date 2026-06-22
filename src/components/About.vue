@@ -65,6 +65,7 @@ useSectionFx(root, (scope) => {
         <p v-html="$t('about.p1')" />
         <p v-html="$t('about.p2')" />
         <p v-html="$t('about.p3')" />
+        <a class="btn btn-primary mt-4 lg:mt-16" :href="$t('about.cv.link')" download="CV_Antonin_Pamart-2026.pdf">{{ $t('about.cv.message') }}</a>
       </div>
 
       <div class="about-side grid gap-8 font-jet text-[11px] uppercase tracking-wider">

@@ -94,6 +94,10 @@ const messages = {
       p1: "Je suis Antonin, dev junior à Grenoble. Principalement back-end, mais <em>full-stack</em> quand il faut. Actuellement en stage à La Haute Société, où j'ai été alternant l'an dernier, et où je devrais l'être à nouveau prochainement.",
       p2: "Ce qui me tient à cœur : <em>apprendre</em>, garder les choses simples, et résoudre les problèmes plutôt que les contourner. Quand un truc devient compliqué, c'est souvent le signe qu'il faut le repenser.",
       p3: "En dehors de l'écran : la <em>salle</em>, la course ou le vélo selon l'humeur. Trois disciplines pour la même excuse : rester en <s>bonne santé</s> vie.",
+      cv : {
+        link: '/cv_pamart.pdf',
+        message: 'Télécharger mon CV (PDF)',
+      },
       studies: 'Études',
       stack: 'Stack technique',
       experiences: 'Expériences',
@@ -218,6 +222,10 @@ const messages = {
       p1: "I'm Antonin, junior dev in Grenoble. Mostly back-end, but <em>full-stack</em> when needed. Currently interning at La Haute Société, where I was an apprentice last year, and where I should be again soon.",
       p2: 'What I care about: <em>learning</em>, keeping things simple, and solving problems rather than working around them. When something gets complicated, it usually means it should be rethought.',
       p3: 'Off-screen: the <em>gym</em>, running, or cycling depending on the mood. Three disciplines, same excuse: staying <s>healthy</s> alive.',
+      cv : {
+        link: '/cv_pamart.pdf',
+        message: 'Download my CV (PDF)',
+      },
       studies: 'Studies',
       stack: 'Tech stack',
       experiences: 'Experience',
